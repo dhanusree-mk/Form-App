@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import EmployeeFeedbackForm from "./components/EmployeeRegistrationForm";
+import StudentRegistrationForm from "./components/StudentRegistrationForm";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Navigate,
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <h1>Form Management</h1>
+
+      <div className="tabs">
+        <Link to="/student" className="tab-link">
+          Student Registration
+        </Link>
+        <Link to="/employee" className="tab-link">
+          Employee Registration
+        </Link>
+      </div>
+
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Navigate to="/student" />} />
+          <Route path="/student" element={<StudentRegistrationForm />} />
+          <Route path="/employee" element={<EmployeeFeedbackForm />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
